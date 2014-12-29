@@ -1,0 +1,108 @@
+.ava{
+  border-radius: 50%;
+  opacity: 0;
+}
+
+line {
+  stroke-dashoffset: 300;
+  stroke-dasharray: 300;
+}
+
+#svg {
+  width: 100%;
+  height: 250px;
+}
+
+
+
+
+input {
+  height: 50px;
+  width: 400px;
+  border: 1px solid grey;
+  border-radius: 20px;
+  display: block;
+  box-sizing: border-box;
+  padding-left: 20px;
+  font-size: 18px;
+  color: rgb(93, 71, 71);
+}
+
+input:focus {
+  /*border: 1px solid grey;*/
+  outline-width: 0;
+}
+
+label {
+  color: grey;
+  display: table;
+  pointer-events: none;
+  margin-top: -40px;
+  /*width: 200px;*/
+  text-align: start;
+  transition: .3s;
+  /*padding-left: 20px;*/
+  margin-left: 22px;
+  background-color: white;
+  padding: 3px;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+input:focus + label, input:valid + label {
+  transform: translate(0, -25px) scale(0.9);
+}
+
+
+.controls-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.horizontal-group {
+  display: flex;
+  justify-content: space-around;
+}
+
+.user-selector {
+  display: flex;
+  align-items: center;
+}
+
+.user-preview {
+  margin: 5px 20px;
+
+}
+
+.user-preview img {
+  border-radius: 50%;
+}
+
+.username {
+  margin-top: 20px;
+  text-align: center;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+button {
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid rgb(21, 21, 178);
+  color: white;
+  background-color: rgb(47, 47, 195);
+  cursor: pointer;
+}

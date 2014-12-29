@@ -14,7 +14,8 @@ require.config({
     "*": {
       "knockout": "../bower_components/knockout.js/knockout",
       "ko": "../bower_components/knockout.js/knockout",
-      "VK": "//vk.com/js/api/openapi.js"
+      "VK": "//vk.com/js/api/openapi.js",
+      "Snap": "../bower_components/snap.svg/dist/snap.svg-min.js"
     }
   }
 });

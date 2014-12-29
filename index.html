@@ -4,12 +4,49 @@
   <meta charset="utf-8">
   <title>Finds out how the minimum number of users between you and any other person</title>
   <script data-main="app/config" src="bower_components/requirejs/require.js"></script>
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-  <h1>vk-handshakes running!</h1>
+  <!-- <h1>vk-handshakes running!</h1>
   <div>
-      Data Binding: 
+      Data Binding:
       <span class="status" data-bind="text: status">Inactive</span>
+  </div> -->
+  <div class="horizontal-group">
+    <h1>VK-handshakes</h1>
   </div>
+  <div class="controls-container">
+    <div class="horizontal-group">
+      <div class="user-selector">
+        <div class="user-preview">
+          <img id="from-avatar" data-bind="attr:{src: fromImgSrc}">
+        </div>
+        <div class="vertical-group">
+          <div class="pro-input">
+            <input type="text" required data-bind="value: fromUrl">
+            <label>From: </label>
+          </div>
+          <div class="username" data-bind="text: fromUsername()"></div>
+        </div>
+      </div>
+      <div class="user-selector">
+        <div class="vertical-group">
+          <div class="pro-input">
+            <input type="text" required data-bind="value: toUrl">
+            <label>To: </label>
+          </div>
+          <div class="username" data-bind="text: toUsername"></div>
+        </div>
+        <div class="user-preview">
+          <img id="to-avatar" data-bind="attr:{src: toImgSrc}">
+        </div>
+      </div>
+    </div>
+    <div class="horizontal-group">
+      <button data-bind="click: start">Search</button>
+    </div>
+  </div>
+
+  <svg id="svg"></svg>
 </body>
 </html>
