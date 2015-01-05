@@ -202,15 +202,17 @@ img.arrow-up {
   z-index: 999;
   top: 0px;
   left: 0px;
-  transition: left .5s;
+  transition: left .5s, opacity .4s;
   background-color: rgb(26, 188, 156);
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 1;
 }
 
 .page-loader.loaded {
   left: 100%;
+  opacity: 0;
 }
 
 
@@ -243,3 +245,7 @@ img.arrow-up {
         -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
       }
     }
+
+.vertical-group {
+  
+}

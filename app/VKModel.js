@@ -28,8 +28,9 @@ define(['jquery', 'VK'], function($) {
     VKModel.prototype.getUserInfoByUrl = function(url) {
       if (url == undefined || url  == '')
         return null;
-      var r = /http:\/\/vk.com\/([\w]+)/i;
+      var r = /https?:\/\/vk.com\/([\w]+)/i;
       var matches = url.match(r);
+      console.log(url, matches);
       if (matches == null)
         return null
       var user_id = matches[1];
@@ -41,23 +42,34 @@ define(['jquery', 'VK'], function($) {
       console.log('getting user info ', user_id )
       var self = this;
       var deferred = $.Deferred();
-      if (this.users[user_id])
-        deferred.resolve(this.users[user_id])
-      else {
-        console.log('not defined')
-        // making requests
+      var apiCall = function() {
         VK.Api.call('users.get',
         {
           user_ids: user_id,
           fields: 'photo_100, photo_200'
         }, function(resp) {
-          if (!resp.error) {
-            self.users[user_id] = resp.response[0];
-            deferred.resolve(self.users[user_id]);
-          } else {
-            deferred.reject();
+          if (resp.error && resp.error.error_code === 6) {
+            console.log('req error', resp.error);
+            setTimeout(apiCall, 600);
+            return;
           }
+          if (resp.error) {
+            console.log('req error', resp.error)
+            deferred.reject();
+            return;
+          }
+          self.users[user_id] = resp.response[0];
+          deferred.resolve(self.users[user_id]);
         })
+      }
+
+      if (this.users[user_id])
+        deferred.resolve(this.users[user_id])
+      else {
+        console.log('not defined')
+        // making requests
+        apiCall();
+
       }
       return deferred.promise();
     }

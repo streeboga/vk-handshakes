@@ -32,8 +32,10 @@ function($, ko, VKSearcher, Snap, VKModel) {
     }, this)
 
     ko.computed(function() {
+      console.log('to update');
       var self = this;
       var promise = vkmodel.getUserInfoByUrl(this.toUrl());
+      console.log(promise);
       if (promise !== null)
         promise.then(function(user) {
           self.toId(user.uid);
@@ -61,8 +63,10 @@ function($, ko, VKSearcher, Snap, VKModel) {
         $('#svg').empty();
         promises = [];
         for (var i = 0; i < res.length; i++) {
+          console.log(res[i]);
           promises.push(vkmodel.getUserInfo(res[i]))
         }
+        console.log('showing results');
         $.when.apply($, promises).then(function(){
           console.log(arguments);
           var users = [];
